@@ -252,7 +252,7 @@
                         <!-- 1ª Spremitura -->
                         <div class="col-md-3">
                             <label for="prima-spremitura" class="form-label">1ª Spremitura</label>
-                            <select class="form-select" id="prima-spremitura">
+                            <select class="form-select spremitura-select" id="prima-spremitura">
                                 <option value="" selected disabled>Seleziona...</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
@@ -275,12 +275,11 @@
                             </select>
                             
                             <div class="mt-2">
-                                <label for="conf-dist-past-prima" class="form-label">Confezionamento Conc. - Dist. - Past.</label>
-                                <select class="form-select" id="conf-dist-past-prima">
+                                <label for="pastorizzazione-prima" class="form-label">Pastorizzazione</label>
+                                <select class="form-select" id="pastorizzazione-prima">
                                     <option value="" selected disabled>Seleziona...</option>
-                                    <option value="Confezionamento">Confezionamento</option>
-                                    <option value="Distillazione">Distillazione</option>
-                                    <option value="Pastorizzazione">Pastorizzazione</option>
+                                    <option value="Pastorizzato">Pastorizzato</option>
+                                    <option value="Non Pastorizzato">Non Pastorizzato</option>
                                 </select>
                             </div>
                             
@@ -295,7 +294,7 @@
                                 </div>
                             </div>
                             
-                            <div id="opzioni-aggiuntive-prima" style="display: none;" class="mt-2">
+                            <div id="opzioni-aggiuntive-prima" class="mt-2">
                                 <label for="grado-bx-prima" class="form-label">Grado °BX</label>
                                 <select class="form-select" id="grado-bx-prima">
                                     <option value="" selected disabled>Seleziona...</option>
@@ -390,7 +389,7 @@
                         <!-- 2ª Spremitura -->
                         <div class="col-md-3">
                             <label for="seconda-spremitura" class="form-label">2ª Spremitura</label>
-                            <select class="form-select" id="seconda-spremitura">
+                            <select class="form-select spremitura-select" id="seconda-spremitura">
                                 <option value="" selected disabled>Seleziona...</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
@@ -413,12 +412,11 @@
                             </select>
                             
                             <div class="mt-2">
-                                <label for="conf-dist-past-seconda" class="form-label">Confezionamento Conc. - Dist. - Past.</label>
-                                <select class="form-select" id="conf-dist-past-seconda">
+                                <label for="pastorizzazione-seconda" class="form-label">Pastorizzazione</label>
+                                <select class="form-select" id="pastorizzazione-seconda">
                                     <option value="" selected disabled>Seleziona...</option>
-                                    <option value="Confezionamento">Confezionamento</option>
-                                    <option value="Distillazione">Distillazione</option>
-                                    <option value="Pastorizzazione">Pastorizzazione</option>
+                                    <option value="Pastorizzato">Pastorizzato</option>
+                                    <option value="Non Pastorizzato">Non Pastorizzato</option>
                                 </select>
                             </div>
                             
@@ -433,7 +431,7 @@
                                 </div>
                             </div>
                             
-                            <div id="opzioni-aggiuntive-seconda" style="display: none;" class="mt-2">
+                            <div id="opzioni-aggiuntive-seconda" class="mt-2">
                                 <label for="grado-bx-seconda" class="form-label">Grado °BX</label>
                                 <select class="form-select" id="grado-bx-seconda">
                                     <option value="" selected disabled>Seleziona...</option>
@@ -478,7 +476,8 @@
                                     <option value="FUSTI T.C">FUSTI T.C</option>
                                     <option value="BIC">BIC</option>
                                     <option value="1 Azz.">1 Azz.</option>
-                                    <!-- Altre opzioni serbatoi come sopra -->
+                                    <option value="2 Azz.">2 Azz.</option>
+                                    <!-- Altri serbatoi come nella prima spremitura -->
                                 </select>
                             </div>
                             
@@ -491,7 +490,7 @@
                         <!-- Torchiato -->
                         <div class="col-md-3">
                             <label for="torchiato" class="form-label">Torchiato</label>
-                            <select class="form-select" id="torchiato">
+                            <select class="form-select spremitura-select" id="torchiato">
                                 <option value="" selected disabled>Seleziona...</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
@@ -508,18 +507,18 @@
                                 <option value="PET 100">PET 100</option>
                                 <option value="PET 200">PET 200</option>
                                 <option value="PET 480">PET 480</option>
-                                <option value="CONCENTRATO">CONCENTRATO</option>
-                                <option value="ALTRO">ALTRO</option>
-                                <option value="Nessuna">Nessuna</option>
-                            </select>
-                            
-                            <div class="mt-2">
-                                <label for="conf-dist-past-torchiato" class="form-label">Confezionamento Conc. - Dist. - Past.</label>
-                                <select class="form-select" id="conf-dist-past-torchiato">
-                                    <option value="" selected disabled>Seleziona...</option>
-                                    <option value="Confezionamento">Confezionamento</option>
-                                   <option value="Distillazione">Distillazione</option>
-                                   <option value="Pastorizzazione">Pastorizzazione</option>
+                                <option value="CONCENTRATO
+                                    <option value="CONCENTRATO">CONCENTRATO</option>
+                               <option value="ALTRO">ALTRO</option>
+                               <option value="Nessuna">Nessuna</option>
+                           </select>
+                           
+                           <div class="mt-2">
+                               <label for="pastorizzazione-torchiato" class="form-label">Pastorizzazione</label>
+                               <select class="form-select" id="pastorizzazione-torchiato">
+                                   <option value="" selected disabled>Seleziona...</option>
+                                   <option value="Pastorizzato">Pastorizzato</option>
+                                   <option value="Non Pastorizzato">Non Pastorizzato</option>
                                </select>
                            </div>
                            
@@ -534,7 +533,7 @@
                                </div>
                            </div>
                            
-                           <div id="opzioni-aggiuntive-torchiato" style="display: none;" class="mt-2">
+                           <div id="opzioni-aggiuntive-torchiato" class="mt-2">
                                <label for="grado-bx-torchiato" class="form-label">Grado °BX</label>
                                <select class="form-select" id="grado-bx-torchiato">
                                    <option value="" selected disabled>Seleziona...</option>
@@ -628,8 +627,8 @@
                        
                        <!-- Estratto -->
                        <div class="col-md-3">
-                           <label for="v-fiorentina" class="form-label">Estratto</label>
-                           <select class="form-select" id="v-fiorentina">
+                           <label for="estratto" class="form-label">Estratto</label>
+                           <select class="form-select spremitura-select" id="estratto">
                                <option value="" selected disabled>Seleziona...</option>
                                <option value="CISTERNA PL">CISTERNA PL</option>
                                <option value="CISTERNA VK">CISTERNA VK</option>
@@ -652,29 +651,28 @@
                            </select>
                            
                            <div class="mt-2">
-                               <label for="conf-dist-past-fiorentina" class="form-label">Confezionamento Conc. - Dist. - Past.</label>
-                               <select class="form-select" id="conf-dist-past-fiorentina">
+                               <label for="pastorizzazione-estratto" class="form-label">Pastorizzazione</label>
+                               <select class="form-select" id="pastorizzazione-estratto">
                                    <option value="" selected disabled>Seleziona...</option>
-                                   <option value="Confezionamento">Confezionamento</option>
-                                   <option value="Distillazione">Distillazione</option>
-                                   <option value="Pastorizzazione">Pastorizzazione</option>
+                                   <option value="Pastorizzato">Pastorizzato</option>
+                                   <option value="Non Pastorizzato">Non Pastorizzato</option>
                                </select>
                            </div>
                            
                            <div class="row mt-2">
                                <div class="col-md-6">
-                                   <label for="quantita-stimata-fiorentina" class="form-label">Quantità Stimata (L)</label>
-                                   <input type="number" class="form-control" id="quantita-stimata-fiorentina" min="0">
+                                   <label for="quantita-stimata-estratto" class="form-label">Quantità Stimata (L)</label>
+                                   <input type="number" class="form-control" id="quantita-stimata-estratto" min="0">
                                </div>
                                <div class="col-md-6">
-                                   <label for="quantita-effettiva-fiorentina" class="form-label">Quantità Effettiva (L)</label>
-                                   <input type="number" class="form-control" id="quantita-fiorentina" min="0">
+                                   <label for="quantita-effettiva-estratto" class="form-label">Quantità Effettiva (L)</label>
+                                   <input type="number" class="form-control" id="quantita-estratto" min="0">
                                </div>
                            </div>
                            
-                           <div id="opzioni-aggiuntive-fiorentina" style="display: none;" class="mt-2">
-                               <label for="grado-bx-fiorentina" class="form-label">Grado °BX</label>
-                               <select class="form-select" id="grado-bx-fiorentina">
+                           <div id="opzioni-aggiuntive-estratto" class="mt-2">
+                               <label for="grado-bx-estratto" class="form-label">Grado °BX</label>
+                               <select class="form-select" id="grado-bx-estratto">
                                    <option value="" selected disabled>Seleziona...</option>
                                    <option value="NAT">NAT</option>
                                    <option value="20°">20°</option>
@@ -688,8 +686,8 @@
                                    <option value="65°">65°</option>
                                </select>
                                
-                               <label for="tenore-polpa-fiorentina" class="form-label mt-2">Tenore di Polpa</label>
-                               <select class="form-select" id="tenore-polpa-fiorentina">
+                               <label for="tenore-polpa-estratto" class="form-label mt-2">Tenore di Polpa</label>
+                               <select class="form-select" id="tenore-polpa-estratto">
                                    <option value="" selected disabled>Seleziona...</option>
                                    <option value="LIMPIDO">LIMPIDO</option>
                                    <option value="SEMICLEAR">SEMICLEAR</option>
@@ -700,8 +698,8 @@
                                    <option value="STANDARD">STANDARD</option>
                                </select>
                                
-                               <label for="stoccaggio-fiorentina" class="form-label mt-2">Stoccaggio/Confezionamento</label>
-                               <select class="form-select" id="stoccaggio-fiorentina">
+                               <label for="stoccaggio-estratto" class="form-label mt-2">Stoccaggio/Confezionamento</label>
+                               <select class="form-select" id="stoccaggio-estratto">
                                    <option value="" selected disabled>Seleziona...</option>
                                    <option value="PET 100">PET 100</option>
                                    <option value="PET 200">PET 200</option>
@@ -759,8 +757,8 @@
                            </div>
                            
                            <div class="mt-2">
-                               <label for="note-fiorentina" class="form-label">Note</label>
-                               <textarea class="form-control" id="note-fiorentina" rows="2"></textarea>
+                               <label for="note-estratto" class="form-label">Note</label>
+                               <textarea class="form-control" id="note-estratto" rows="2"></textarea>
                            </div>
                        </div>
                    </div>
@@ -791,6 +789,12 @@
            let succoTotale = 0;
            let olioTotale = 0;
            let lottiRegistrati = 0;
+           
+           // Inizializza stato dei campi opzioni aggiuntive (nascosti all'inizio)
+           $("#opzioni-aggiuntive-prima").hide();
+           $("#opzioni-aggiuntive-seconda").hide();
+           $("#opzioni-aggiuntive-torchiato").hide();
+           $("#opzioni-aggiuntive-estratto").hide();
            
            // Gestione altra linea di trasformazione
            $("#linea-trasformazione").change(function() {
@@ -842,8 +846,8 @@
                }
            });
            
-           // IMPORTANTE: Gestione opzioni aggiuntive per tutte le spremiture
-           // Prima spremitura - mostra opzioni aggiuntive per tutte le selezioni eccetto "Nessuna"
+           // NUOVA LOGICA: Gestione opzioni aggiuntive per tutte le spremiture
+           // Prima spremitura - mostra opzioni aggiuntive per qualsiasi selezione tranne "Nessuna"
            $("#prima-spremitura").change(function() {
                if ($(this).val() && $(this).val() !== "Nessuna") {
                    $("#opzioni-aggiuntive-prima").slideDown();
@@ -879,15 +883,15 @@
                }
            });
            
-           // Estratto (v-fiorentina)
-           $("#v-fiorentina").change(function() {
+           // Estratto
+           $("#estratto").change(function() {
                if ($(this).val() && $(this).val() !== "Nessuna") {
-                   $("#opzioni-aggiuntive-fiorentina").slideDown();
+                   $("#opzioni-aggiuntive-estratto").slideDown();
                } else {
-                   $("#opzioni-aggiuntive-fiorentina").slideUp();
-                   $("#grado-bx-fiorentina").val("");
-                   $("#tenore-polpa-fiorentina").val("");
-                   $("#stoccaggio-fiorentina").val("");
+                   $("#opzioni-aggiuntive-estratto").slideUp();
+                   $("#grado-bx-estratto").val("");
+                   $("#tenore-polpa-estratto").val("");
+                   $("#stoccaggio-estratto").val("");
                }
            });
            
@@ -895,7 +899,10 @@
            $("#btn-reset").click(function() {
                if (confirm("Vuoi davvero annullare? I dati inseriti andranno persi.")) {
                    $("#produzione-form")[0].reset();
-                   $("[id^='opzioni-aggiuntive-']").hide();
+                   $("#opzioni-aggiuntive-prima").hide();
+                   $("#opzioni-aggiuntive-seconda").hide();
+                   $("#opzioni-aggiuntive-torchiato").hide();
+                   $("#opzioni-aggiuntive-estratto").hide();
                    $("[id$='-container']").hide();
                }
            });
@@ -976,7 +983,7 @@
                let spremiture = {
                    prima: {
                        destinazione: $("#prima-spremitura").val(),
-                       confDistPast: $("#conf-dist-past-prima").val(),
+                       pastorizzazione: $("#pastorizzazione-prima").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-prima").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-prima").val()) || 0,
                        gradoBx: $("#grado-bx-prima").val(),
@@ -986,7 +993,7 @@
                    },
                    seconda: {
                        destinazione: $("#seconda-spremitura").val(),
-                       confDistPast: $("#conf-dist-past-seconda").val(),
+                       pastorizzazione: $("#pastorizzazione-seconda").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-seconda").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-seconda").val()) || 0,
                        gradoBx: $("#grado-bx-seconda").val(),
@@ -996,7 +1003,7 @@
                    },
                    torchiato: {
                        destinazione: $("#torchiato").val(),
-                       confDistPast: $("#conf-dist-past-torchiato").val(),
+                       pastorizzazione: $("#pastorizzazione-torchiato").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-torchiato").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-torchiato").val()) || 0,
                        gradoBx: $("#grado-bx-torchiato").val(),
@@ -1005,14 +1012,14 @@
                        note: $("#note-torchiato").val()
                    },
                    estratto: {
-                       destinazione: $("#v-fiorentina").val(),
-                       confDistPast: $("#conf-dist-past-fiorentina").val(),
-                       quantitaStimata: parseInt($("#quantita-stimata-fiorentina").val()) || 0,
-                       quantitaEffettiva: parseInt($("#quantita-fiorentina").val()) || 0,
-                       gradoBx: $("#grado-bx-fiorentina").val(),
-                       tenorePolpa: $("#tenore-polpa-fiorentina").val(),
-                       stoccaggio: $("#stoccaggio-fiorentina").val(),
-                       note: $("#note-fiorentina").val()
+                       destinazione: $("#estratto").val(),
+                       pastorizzazione: $("#pastorizzazione-estratto").val(),
+                       quantitaStimata: parseInt($("#quantita-stimata-estratto").val()) || 0,
+                       quantitaEffettiva: parseInt($("#quantita-estratto").val()) || 0,
+                       gradoBx: $("#grado-bx-estratto").val(),
+                       tenorePolpa: $("#tenore-polpa-estratto").val(),
+                       stoccaggio: $("#stoccaggio-estratto").val(),
+                       note: $("#note-estratto").val()
                    }
                };
                
@@ -1037,7 +1044,8 @@
                // Verifica che per ogni spremitura selezionata ci siano tutti i dettagli richiesti
                function verificaDettagliSpremitura(spremitura) {
                    if (spremitura.destinazione && spremitura.destinazione !== "Nessuna") {
-                       if (!spremitura.gradoBx || !spremitura.tenorePolpa || !spremitura.stoccaggio) {
+                       if (!spremitura.gradoBx || !spremitura.tenorePolpa || !spremitura.stoccaggio || !spremitura.pastorizzazione)
+                           if (!spremitura.gradoBx || !spremitura.tenorePolpa || !spremitura.stoccaggio || !spremitura.pastorizzazione) {
                            return false;
                        }
                    }
@@ -1048,8 +1056,7 @@
                    !verificaDettagliSpremitura(spremiture.seconda) || 
                    !verificaDettagliSpremitura(spremiture.torchiato) || 
                    !verificaDettagliSpremitura(spremiture.estratto)) {
-                   alert("Per tutte le spremiture selezionate devi specificare: Grado °BX, Tenore di Polpa e Stoccaggio/Confezion
-                         alert("Per tutte le spremiture selezionate devi specificare: Grado °BX, Tenore di Polpa e Stoccaggio/Confezionamento!");
+                   alert("Per tutte le spremiture selezionate devi specificare: Grado °BX, Tenore di Polpa, Stoccaggio/Confezionamento e Pastorizzazione!");
                    return;
                }
                
@@ -1073,7 +1080,10 @@
                
                // Reset form
                $("#produzione-form")[0].reset();
-               $("[id^='opzioni-aggiuntive-']").hide();
+               $("#opzioni-aggiuntive-prima").hide();
+               $("#opzioni-aggiuntive-seconda").hide();
+               $("#opzioni-aggiuntive-torchiato").hide();
+               $("#opzioni-aggiuntive-estratto").hide();
                $("[id$='-container']").hide();
                
                alert("Dati di produzione salvati con successo!\nID Lotto: " + lottoId);
