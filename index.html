@@ -64,16 +64,6 @@
             margin-bottom: 15px;
             border-left: 4px solid #D4A017;
         }
-        .highlighted-info {
-            background-color: #f5efd4;
-            border: 2px solid #D4A017;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-align: center;
-        }
         .highlighted-field {
             font-weight: bold;
             background-color: #fff8e1;
@@ -81,14 +71,51 @@
             padding: 8px;
             border-radius: 5px;
         }
-        .main-title {
-            font-size: 1.8rem;
+        
+        /* Nuovi stili per l'intestazione principale */
+        .main-title-container {
+            background-color: #fff8e1;
+            border: 3px solid #D4A017;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .agrume-data-field {
+            font-size: 1.3rem;
+            font-weight: bold;
+            background-color: #fff;
+            border: 2px solid #D4A017;
+            padding: 12px;
+            border-radius: 8px;
+            color: #000;
+            text-align: center;
+            width: 100%;
+            height: 60px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .agrume-data-field:hover, .agrume-data-field:focus {
+            border-color: #b08612;
+            box-shadow: 0 4px 8px rgba(212, 160, 23, 0.3);
+        }
+        
+        .agrume-data-label {
+            font-size: 1.2rem;
             font-weight: bold;
             color: #D4A017;
+            margin-bottom: 5px;
+            text-transform: uppercase;
             text-align: center;
-            margin: 15px 0;
-            border-bottom: 2px solid #D4A017;
-            padding-bottom: 10px;
+        }
+        
+        .title-divider {
+            height: 3px;
+            background-color: #D4A017;
+            margin: 10px 0 20px 0;
         }
     </style>
 </head>
@@ -117,10 +144,11 @@
         <!-- Informazioni principali evidenziate -->
         <div class="row mb-4">
             <div class="col-12">
-                <div class="main-title">
+                <div class="main-title-container">
                     <div class="row align-items-center">
-                        <div class="col-md-4">
-                            <select class="form-select form-select-lg highlighted-field" id="tipo-agrume" required>
+                        <div class="col-md-5">
+                            <div class="agrume-data-label">TIPO DI AGRUME</div>
+                            <select class="form-select agrume-data-field" id="tipo-agrume" required>
                                 <option value="" selected disabled>Seleziona Agrume...</option>
                                 <option value="Arance">ARANCE</option>
                                 <option value="Arance Rosse">ARANCE ROSSE</option>
@@ -130,14 +158,21 @@
                                 <option value="Altro">ALTRO</option>
                             </select>
                             <div id="altro-agrume-container" style="display: none;" class="mt-2">
-                                <input type="text" class="form-control highlighted-field" id="altro-agrume" placeholder="Specifica altro agrume">
+                                <input type="text" class="form-control agrume-data-field" id="altro-agrume" placeholder="Specifica altro agrume">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <span id="titolo-data">DEL <input type="date" class="form-control highlighted-field" id="data-lavorazione" required></span>
+                        <div class="col-md-2 d-flex justify-content-center align-items-center">
+                            <h2 class="text-center mb-0 display-6">DEL</h2>
                         </div>
-                        <div class="col-md-4">
-                            <div id="info-lotto" class="highlighted-field"></div>
+                        <div class="col-md-5">
+                            <div class="agrume-data-label">DATA</div>
+                            <input type="date" class="form-control agrume-data-field" id="data-lavorazione" required>
+                        </div>
+                    </div>
+                    <div class="title-divider"></div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div id="info-lotto" class="h4 text-primary"></div>
                         </div>
                     </div>
                 </div>
@@ -459,71 +494,121 @@
                                 <select class="form-select" id="stoccaggio-seconda">
                                     <option value="" selected disabled>Seleziona...</option>
                                     <option value="PET 100">PET 100</option>
-                                    <!-- Altre opzioni stoccaggio come nella prima spremitura -->
-                                </select>
-                            </div>
-                            
-                            <div class="mt-2">
-                                <label for="note-seconda" class="form-label">Note</label>
-                                <textarea class="form-control" id="note-seconda" rows="2"></textarea>
-                            </div>
-                        </div>
-                        
-                        <!-- Torchiato -->
-                        <div class="col-md-3">
-                            <label for="torchiato" class="form-label">Torchiato</label>
-                            <select class="form-select spremitura-select" id="torchiato">
-                                <option value="" selected disabled>Seleziona...</option>
-                                <option value="CISTERNA PL">CISTERNA PL</option>
-                                <option value="CISTERNA VK">CISTERNA VK</option>
-                                <option value="CISTERNA EF">CISTERNA EF</option>
-                                <option value="NAT IN TINI CONSERVATO">NAT IN TINI CONSERVATO</option>
-                                <option value="F.F.">F.F.</option>
-                                <option value="F.T.C.">F.T.C.</option>
-                                <option value="LATTE 20 KG">LATTE 20 KG</option>
-                                <option value="VASCHETTE">VASCHETTE</option>
-                                <option value="VASCHETTE ZUCCHERATE">VASCHETTE ZUCCHERATE</option>
-                                <option value="REX">REX</option>
-                                <option value="ACMA">ACMA</option>
-                                <option value="GOGLIO 3 KG">GOGLIO 3 KG</option>
-                                <option value="PET 100">PET 100</option>
-                                <option value="PET 200">PET 200</option>
-                                <option value="PET 480">PET 480</option>
-                                <option value="CONCENTRATO">CONCENTRATO</option>
-                                <option value="ALTRO">ALTRO</option>
-                                <option value="Nessuna">Nessuna</option>
-                            </select>
-                            
-                            <div class="row mt-2">
-                                <div class="col-md-6">
-                                    <label for="quantita-stimata-torchiato" class="form-label">Quantità Stimata (L)</label>
-                                    <input type="number" class="form-control" id="quantita-stimata-torchiato" min="0">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="quantita-effettiva-torchiato" class="form-label">Quantità Effettiva (L)</label>
-                                    <input type="number" class="form-control" id="quantita-torchiato" min="0">
-                                </div>
-                            </div>
-                            
-                            <div id="opzioni-aggiuntive-torchiato" class="mt-2">
-                                <label for="grado-bx-torchiato" class="form-label">Grado °BX</label>
-                                <select class="form-select" id="grado-bx-torchiato">
-                                    <option value="" selected disabled>Seleziona...</option>
-                                    <option value="NAT">NAT</option>
-                                    <option value="20°">20°</option>
-                                    <option value="32°">32°</option>
-                                    <option value="40°">40°</option>
-                                    <option value="45°">45°</option>
-                                    <option value="55°">55°</option>
-                                    <option value="58°">58°</option>
-                                    <option value="60°">60°</option>
-                                    <option value="63.5°">63.5°</option>
-                                    <option value="65°">65°</option>
-                                </select>
-                                
-                                <label for="tenore-polpa-torchiato" class="form-label mt-2">Tenore di Polpa</label>
-                                <select class="form-select" id="tenore-polpa-torchiato
-                                    <select class="form-select" id="tenore-polpa-torchiato">
+                                    <option value="PET 200">PET 200</option>
+                                    <option value="PET 480">PET 480</option>
+                                    <option value="REX">REX</option>
+                                    <option value="ACMA">ACMA</option>
+                                    <option value="BUSTE GOGLIO">BUSTE GOGLIO</option>
+                                    <option value="VASCHETTE">VASCHETTE</option>
+                                    <option value="VASCHETTE ZUCCHERATE">VASCHETTE ZUCCHERATE</option>
+                                    <option value="LATTE">LATTE</option>
+                                    <option value="FBL">FBL</option>
+                                    <option value="FUSTI DI FERRO">FUSTI DI FERRO</option>
+                                    <option value="FUSTI T.C">FUSTI T.C</option>
+                                    <option value="BIC">BIC</option>
+                                    <option value="1 Azz.">1 Azz.</option>
+                                    <option value="2 Azz.">2 Azz.</option>
+                                    <option value="3 Azz.">3 Azz.</option>
+                                    <option value="4 Azz.">4 Azz.</option>
+                                    <option value="5 Azz.">5 Azz.</option>
+                                    <option value="6 Azz.">6 Azz.</option>
+                                    <option value="7 Azz.">7 Azz.</option>
+                                    <option value="8 Azz.">8 Azz.</option>
+                                    <option value="9 Azz.">9 Azz.</option>
+                                    <option value="10 Azz.">10 Azz.</option>
+                                    <option value="1 Est.">1 Est.</option>
+                                    <option value="2 Est.">2 Est.</option>
+                                    <option value="3 Est.">3 Est.</option>
+                                    <option value="4 Est.">4 Est.</option>
+                                    <option value="5 Est.">5 Est.</option>
+                                    <option value="6 Est.">6 Est.</option>
+                                    <option value="7 Est.">7 Est.</option>
+                                    <option value="8 Est.">8 Est.</option>
+                                    <option value="9 Est.">9 Est.</option>
+                                    <option value="10 Est.">10 Est.</option>
+                                    <option value="11 Est.">11 Est.</option>
+                                    <option value="11 Est.">11 Est.</option>
+                                   <option value="12 Est.">12 Est.</option>
+                                   <option value="13 Est.">13 Est.</option>
+                                   <option value="14 Est.">14 Est.</option>
+                                   <option value="15 Est.">15 Est.</option>
+                                   <option value="16 Est.">16 Est.</option>
+                                   <option value="17 Est.">17 Est.</option>
+                                   <option value="18 Est.">18 Est.</option>
+                                   <option value="71 Est.">71 Est.</option>
+                                   <option value="72 Est.">72 Est.</option>
+                                   <option value="73 Est.">73 Est.</option>
+                                   <option value="74 Est.">74 Est.</option>
+                                   <option value="75 Est.">75 Est.</option>
+                                   <option value="76 Est.">76 Est.</option>
+                                   <option value="77 Est.">77 Est.</option>
+                                   <option value="78 Est.">78 Est.</option>
+                                   <option value="79 Est.">79 Est.</option>
+                                   <option value="80 Est.">80 Est.</option>
+                                   <option value="81 Est.">81 Est.</option>
+                               </select>
+                           </div>
+                           
+                           <div class="mt-2">
+                               <label for="note-seconda" class="form-label">Note</label>
+                               <textarea class="form-control" id="note-seconda" rows="2"></textarea>
+                           </div>
+                       </div>
+                       
+                       <!-- Torchiato -->
+                       <div class="col-md-3">
+                           <label for="torchiato" class="form-label">Torchiato</label>
+                           <select class="form-select spremitura-select" id="torchiato">
+                               <option value="" selected disabled>Seleziona...</option>
+                               <option value="CISTERNA PL">CISTERNA PL</option>
+                               <option value="CISTERNA VK">CISTERNA VK</option>
+                               <option value="CISTERNA EF">CISTERNA EF</option>
+                               <option value="NAT IN TINI CONSERVATO">NAT IN TINI CONSERVATO</option>
+                               <option value="F.F.">F.F.</option>
+                               <option value="F.T.C.">F.T.C.</option>
+                               <option value="LATTE 20 KG">LATTE 20 KG</option>
+                               <option value="VASCHETTE">VASCHETTE</option>
+                               <option value="VASCHETTE ZUCCHERATE">VASCHETTE ZUCCHERATE</option>
+                               <option value="REX">REX</option>
+                               <option value="ACMA">ACMA</option>
+                               <option value="GOGLIO 3 KG">GOGLIO 3 KG</option>
+                               <option value="PET 100">PET 100</option>
+                               <option value="PET 200">PET 200</option>
+                               <option value="PET 480">PET 480</option>
+                               <option value="CONCENTRATO">CONCENTRATO</option>
+                               <option value="ALTRO">ALTRO</option>
+                               <option value="Nessuna">Nessuna</option>
+                           </select>
+                           
+                           <div class="row mt-2">
+                               <div class="col-md-6">
+                                   <label for="quantita-stimata-torchiato" class="form-label">Quantità Stimata (L)</label>
+                                   <input type="number" class="form-control" id="quantita-stimata-torchiato" min="0">
+                               </div>
+                               <div class="col-md-6">
+                                   <label for="quantita-effettiva-torchiato" class="form-label">Quantità Effettiva (L)</label>
+                                   <input type="number" class="form-control" id="quantita-torchiato" min="0">
+                               </div>
+                           </div>
+                           
+                           <div id="opzioni-aggiuntive-torchiato" class="mt-2">
+                               <label for="grado-bx-torchiato" class="form-label">Grado °BX</label>
+                               <select class="form-select" id="grado-bx-torchiato">
+                                   <option value="" selected disabled>Seleziona...</option>
+                                   <option value="NAT">NAT</option>
+                                   <option value="20°">20°</option>
+                                   <option value="32°">32°</option>
+                                   <option value="40°">40°</option>
+                                   <option value="45°">45°</option>
+                                   <option value="55°">55°</option>
+                                   <option value="58°">58°</option>
+                                   <option value="60°">60°</option>
+                                   <option value="63.5°">63.5°</option>
+                                   <option value="65°">65°</option>
+                               </select>
+                               
+                               <label for="tenore-polpa-torchiato" class="form-label mt-2">Tenore di Polpa</label>
+                               <select class="form-select" id="tenore-polpa-torchiato">
                                    <option value="" selected disabled>Seleziona...</option>
                                    <option value="LIMPIDO">LIMPIDO</option>
                                    <option value="SEMICLEAR">SEMICLEAR</option>
@@ -805,11 +890,9 @@
                }
                
                if (tipoAgrume && dataFormattata) {
-                   $("#titolo-data").html("DEL " + dataFormattata);
-                   // Formatta e mostra il titolo principale evidenziato
-                   $(".main-title").addClass("highlight-animation");
+                   $(".main-title-container").addClass("highlight-animation");
                    setTimeout(function() {
-                       $(".main-title").removeClass("highlight-animation");
+                       $(".main-title-container").removeClass("highlight-animation");
                    }, 1000);
                }
            }
@@ -997,6 +1080,10 @@
                    orarioPartenzaStimato: $("#orario-partenza-stimato").val(),
                    orarioPartenzaEffettivo: $("#orario-partenza-effettivo").val(),
                    orarioFineStimato: $("#orario-fine-stimato").val(),
+                   orarioFineEffettivo
+                   orarioPartenzaStimato: $("#orario-partenza-stimato").val(),
+                   orarioPartenzaEffettivo: $("#orario-partenza-effettivo").val(),
+                   orarioFineStimato: $("#orario-fine-stimato").val(),
                    orarioFineEffettivo: $("#orario-fine-effettivo").val(),
                    quantitaFruttaStimata: parseInt($("#quantita-frutta-stimata").val()) || 0,
                    quantitaFruttaEffettiva: parseInt($("#quantita-frutta-effettiva").val()) || 0
@@ -1075,10 +1162,6 @@
                }
                
                if (!verificaDettagliSpremitura(spremiture.prima) || 
-                   !verificaDettagliSpremitura(spremiture.seconda) || 
-                   !verificaDettagliSpremitura(spremiture.torchiato) || 
-                   !verificaDettagliSpremitura(spremiture.
-                                               !verificaDettagliSpremitura(spremiture.prima) || 
                    !verificaDettagliSpremitura(spremiture.seconda) || 
                    !verificaDettagliSpremitura(spremiture.torchiato) || 
                    !verificaDettagliSpremitura(spremiture.estratto)) {
