@@ -34,14 +34,6 @@
             font-weight: bold;
             color: #D4A017;
         }
-        .tank-card {
-            height: 100%;
-            transition: all 0.3s;
-        }
-        .tank-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
         .btn-custom {
             background-color: #D4A017;
             color: white;
@@ -50,23 +42,19 @@
             background-color: #b08612;
             color: white;
         }
-        .tank-header {
-            background-color: #f5efd4;
-            text-align: center;
-            font-weight: bold;
-        }
         .required-field::after {
             content: " *";
             color: red;
         }
-        .nav-tabs .nav-link.active {
-            background-color: #f5efd4;
-            border-color: #D4A017 #D4A017 #f5efd4;
-            color: #D4A017;
+        /* Aggiungiamo un po' di stile per i pulsanti di registrazione */
+        .btn-registro {
+            background-color: #0056b3;
+            color: white;
             font-weight: bold;
         }
-        .nav-tabs .nav-link {
-            color: #495057;
+        .btn-registro:hover {
+            background-color: #004494;
+            color: white;
         }
     </style>
 </head>
@@ -114,8 +102,8 @@
             </div>
             <div class="col-md-3">
                 <div class="card stats-card">
-                    <div class="stats-value" id="serbatoi-utilizzati">0/20</div>
-                    <div>Serbatoi Utilizzati</div>
+                    <div class="stats-value" id="lotti-registrati">0</div>
+                    <div>Lotti Registrati</div>
                 </div>
             </div>
         </div>
@@ -213,8 +201,6 @@
                             <label for="prima-spremitura" class="form-label">1ª Spremitura</label>
                             <select class="form-select" id="prima-spremitura">
                                 <option value="" selected disabled>Seleziona...</option>
-                                <option value="SERB 11000">SERB 11000</option>
-                                <option value="SERB AZZ">SERB AZZ</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
                                 <option value="CISTERNA EF">CISTERNA EF</option>
@@ -261,6 +247,24 @@
                                     <option value="<7% SEMICLEAR"><7% SEMICLEAR</option>
                                     <option value="LIMPIDO">LIMPIDO</option>
                                 </select>
+                                
+                                <label for="stoccaggio-prima" class="form-label mt-2">Stoccaggio Prodotto</label>
+                                <select class="form-select" id="stoccaggio-prima">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="SERB 36">SERB 36</option>
+                                    <option value="SERB 45">SERB 45</option>
+                                    <option value="SERB 39">SERB 39</option>
+                                    <option value="1 Azz.">1 Azz.</option>
+                                    <option value="2 Azz.">2 Azz.</option>
+                                    <option value="3 Azz.">3 Azz.</option>
+                                    <option value="4 Azz.">4 Azz.</option>
+                                    <option value="5 Azz.">5 Azz.</option>
+                                    <option value="6 Azz.">6 Azz.</option>
+                                    <option value="7 Azz.">7 Azz.</option>
+                                    <option value="8 Azz.">8 Azz.</option>
+                                    <option value="9 Azz.">9 Azz.</option>
+                                    <option value="10 Azz.">10 Azz.</option>
+                                </select>
                             </div>
                             <div class="mt-2">
                                 <label for="note-prima" class="form-label">Note</label>
@@ -272,8 +276,6 @@
                             <label for="seconda-spremitura" class="form-label">2ª Spremitura</label>
                             <select class="form-select" id="seconda-spremitura">
                                 <option value="" selected disabled>Seleziona...</option>
-                                <option value="SERB 11000">SERB 11000</option>
-                                <option value="SERB AZZ">SERB AZZ</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
                                 <option value="CISTERNA EF">CISTERNA EF</option>
@@ -320,6 +322,24 @@
                                     <option value="<7% SEMICLEAR"><7% SEMICLEAR</option>
                                     <option value="LIMPIDO">LIMPIDO</option>
                                 </select>
+                                
+                                <label for="stoccaggio-seconda" class="form-label mt-2">Stoccaggio Prodotto</label>
+                                <select class="form-select" id="stoccaggio-seconda">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="SERB 36">SERB 36</option>
+                                    <option value="SERB 45">SERB 45</option>
+                                    <option value="SERB 39">SERB 39</option>
+                                    <option value="1 Azz.">1 Azz.</option>
+                                    <option value="2 Azz.">2 Azz.</option>
+                                    <option value="3 Azz.">3 Azz.</option>
+                                    <option value="4 Azz.">4 Azz.</option>
+                                    <option value="5 Azz.">5 Azz.</option>
+                                    <option value="6 Azz.">6 Azz.</option>
+                                    <option value="7 Azz.">7 Azz.</option>
+                                    <option value="8 Azz.">8 Azz.</option>
+                                    <option value="9 Azz.">9 Azz.</option>
+                                    <option value="10 Azz.">10 Azz.</option>
+                                </select>
                             </div>
                             <div class="mt-2">
                                 <label for="note-seconda" class="form-label">Note</label>
@@ -331,8 +351,6 @@
                             <label for="torchiato" class="form-label">Torchiato</label>
                             <select class="form-select" id="torchiato">
                                 <option value="" selected disabled>Seleziona...</option>
-                                <option value="SERB 11000">SERB 11000</option>
-                                <option value="SERB AZZ">SERB AZZ</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
                                 <option value="CISTERNA EF">CISTERNA EF</option>
@@ -379,6 +397,24 @@
                                     <option value="<7% SEMICLEAR"><7% SEMICLEAR</option>
                                     <option value="LIMPIDO">LIMPIDO</option>
                                 </select>
+                                
+                                <label for="stoccaggio-torchiato" class="form-label mt-2">Stoccaggio Prodotto</label>
+                                <select class="form-select" id="stoccaggio-torchiato">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="SERB 36">SERB 36</option>
+                                    <option value="SERB 45">SERB 45</option>
+                                    <option value="SERB 39">SERB 39</option>
+                                    <option value="1 Azz.">1 Azz.</option>
+                                    <option value="2 Azz.">2 Azz.</option>
+                                    <option value="3 Azz.">3 Azz.</option>
+                                    <option value="4 Azz.">4 Azz.</option>
+                                    <option value="5 Azz.">5 Azz.</option>
+                                    <option value="6 Azz.">6 Azz.</option>
+                                    <option value="7 Azz.">7 Azz.</option>
+                                    <option value="8 Azz.">8 Azz.</option>
+                                    <option value="9 Azz.">9 Azz.</option>
+                                    <option value="10 Azz.">10 Azz.</option>
+                                </select>
                             </div>
                             <div class="mt-2">
                                 <label for="note-torchiato" class="form-label">Note</label>
@@ -390,8 +426,6 @@
                             <label for="v-fiorentina" class="form-label">V. Fiorentina</label>
                             <select class="form-select" id="v-fiorentina">
                                 <option value="" selected disabled>Seleziona...</option>
-                                <option value="SERB 11000">SERB 11000</option>
-                                <option value="SERB AZZ">SERB AZZ</option>
                                 <option value="CISTERNA PL">CISTERNA PL</option>
                                 <option value="CISTERNA VK">CISTERNA VK</option>
                                 <option value="CISTERNA EF">CISTERNA EF</option>
@@ -438,130 +472,59 @@
                                     <option value="<7% SEMICLEAR"><7% SEMICLEAR</option>
                                     <option value="LIMPIDO">LIMPIDO</option>
                                 </select>
-                            </div>
-                            <div class="mt-2">
-                                <label for="note-fiorentina" class="form-label">Note</label>
-                                <textarea class="form-control" id="note-fiorentina" rows="2"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                                
+                                <label for="stoccaggio-fiorentina" class="form-label mt-2">Stoccaggio Prodotto</label>
+                                <select class="form-select" id="stoccaggio-fiorentina">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="SERB 36">SERB 36</option>
+                                    <option value="SERB 45">SERB 45</option>
+                                    <option value="SERB 39">SERB 39</option>
+                                    <option value="1 Azz.">1 Azz.</option>
+                                    <option value="2 Azz.">2 Azz.</option>
+                                    <option value="3 Azz.">3 Azz.</option>
+                                    <option value="4 Azz.">4 Azz.</option>
+                                    <option value="5 Azz.">5 Azz.</option>
+                                    <option value="6 Azz.">6 Azz.</option>
+                                    <option value="7 Azz.">7 Azz.</option>
+                                    <option value="8 Azz.">8 Azz.</option>
+                                    <option value="9 Azz.">9 Azz.</option>
+                                    <option value="10 Azz.">10 Az
+                                        <option value="10 Azz.">10 Azz.</option>
+                               </select>
+                           </div>
+                           <div class="mt-2">
+                               <label for="note-fiorentina" class="form-label">Note</label>
+                               <textarea class="form-control" id="note-fiorentina" rows="2"></textarea>
+                           </div>
+                       </div>
+                   </div>
 
-                    <div class="text-end mt-4">
-                        <button type="button" class="btn btn-secondary me-2" id="btn-reset">
-                            <i class="bi bi-x-circle"></i> Annulla
-                        </button>
-                        <button type="submit" class="btn btn-custom">
-                            <i class="bi bi-save"></i> Salva Dati
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                   <div class="text-end mt-4">
+                       <button type="button" class="btn btn-secondary me-2" id="btn-reset">
+                           <i class="bi bi-x-circle"></i> Annulla
+                       </button>
+                       <button type="submit" class="btn btn-custom me-2">
+                           <i class="bi bi-save"></i> Salva Dati
+                       </button>
+                       <button type="button" class="btn btn-registro" id="btn-registro-elettronico">
+                           <i class="bi bi-journal-check"></i> Registra su Bolletta Elettronica
+                       </button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
 
-        <!-- Stato Serbatoi -->
-        <div class="card">
-            <div class="card-header">
-                <i class="bi bi-database-fill"></i> Stato Serbatoi
-                <button class="btn btn-sm btn-outline-success float-end" id="btn-etichette">
-                    <i class="bi bi-tag"></i> Gestione Etichette
-                </button>
-            </div>
-            <div class="card-body">
-                <ul class="nav nav-tabs mb-4" id="serbatoi-tabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="serbazz-tab" data-bs-toggle="tab" data-bs-target="#serbazz-content" type="button" role="tab">SERB AZZ</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="serb11000-tab" data-bs-toggle="tab" data-bs-target="#serb11000-content" type="button" role="tab">SERB 11000</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="serbdist-tab" data-bs-toggle="tab" data-bs-target="#serbdist-content" type="button" role="tab">SERB Distillatori</button>
-                    </li>
-                </ul>
-                
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="serbazz-content" role="tabpanel">
-                        <div class="row">
-                            <!-- I serbatoi AZZ -->
-                        </div>
-                    </div>
-                    
-                    <div class="tab-pane fade" id="serb11000-content" role="tabpanel">
-                        <div class="row">
-                            <!-- I serbatoi 11000 -->
-                        </div>
-                    </div>
-                    
-                    <div class="tab-pane fade" id="serbdist-content" role="tabpanel">
-                        <div class="row">
-                            <!-- I serbatoi distillatori -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Etichette Serbatoi -->
-    <div class="modal fade" id="etichetteModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-light">
-                    <h5 class="modal-title"><i class="bi bi-tag"></i> Etichetta Serbatoio <span id="serb-id"></span></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="etichette-form">
-                        <!-- I campi del form etichette -->
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-custom" id="btn-save-etichetta">Salva ed Etichetta</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <!-- Script JS -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
    <script>
        $(document).ready(function() {
            // Dati di stato
            let lottiCount = 0;
            let succoTotale = 0;
            let olioTotale = 0;
-           let serbatoi = {
-               // Serbatoi AZZ
-               "1Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "2Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "3Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "4Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "5Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "6Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "7Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "8Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "9Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "10Azz": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               // Serbatoi 11000
-               "S21": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S22": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S23": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S24": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S25": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S26": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S27": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S28": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S29": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "S30": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               // Distillatori
-               "D1": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "D2": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "D3": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"},
-               "D4": {stato: "Disponibile", prodotto: "-", quantita: 0, certificazione: "-"}
-           };
+           let lottiRegistrati = 0;
            
            // Gestione altra linea di trasformazione
            $("#linea-trasformazione").change(function() {
@@ -613,179 +576,60 @@
                }
            });
            
-           // Gestione opzione "CONCENTRATO" per le spremiture
+           // IMPORTANTE: Gestione campi CONCENTRATO (utilizzo di variabili jQuery e .on diretto con funzione freccia)
            // Prima spremitura
-           $("#prima-spremitura").on('change', function() {
+           $("#prima-spremitura").on("change", function() {
                if ($(this).val() === "CONCENTRATO") {
-                   $("#concentrato-container-prima").show();
+                   $("#concentrato-container-prima").slideDown();
                } else {
-                   $("#concentrato-container-prima").hide();
+                   $("#concentrato-container-prima").slideUp();
                    $("#grado-bx-prima").val("");
                    $("#tenore-polpa-prima").val("");
+                   $("#stoccaggio-prima").val("");
                }
            });
            
            // Seconda spremitura
-           $("#seconda-spremitura").on('change', function() {
+           $("#seconda-spremitura").on("change", function() {
                if ($(this).val() === "CONCENTRATO") {
-                   $("#concentrato-container-seconda").show();
+                   $("#concentrato-container-seconda").slideDown();
                } else {
-                   $("#concentrato-container-seconda").hide();
+                   $("#concentrato-container-seconda").slideUp();
                    $("#grado-bx-seconda").val("");
                    $("#tenore-polpa-seconda").val("");
+                   $("#stoccaggio-seconda").val("");
                }
            });
            
            // Torchiato
-           $("#torchiato").on('change', function() {
+           $("#torchiato").on("change", function() {
                if ($(this).val() === "CONCENTRATO") {
-                   $("#concentrato-container-torchiato").show();
+                   $("#concentrato-container-torchiato").slideDown();
                } else {
-                   $("#concentrato-container-torchiato").hide();
+                   $("#concentrato-container-torchiato").slideUp();
                    $("#grado-bx-torchiato").val("");
                    $("#tenore-polpa-torchiato").val("");
+                   $("#stoccaggio-torchiato").val("");
                }
            });
            
            // V. Fiorentina
-           $("#v-fiorentina").on('change', function() {
+           $("#v-fiorentina").on("change", function() {
                if ($(this).val() === "CONCENTRATO") {
-                   $("#concentrato-container-fiorentina").show();
+                   $("#concentrato-container-fiorentina").slideDown();
                } else {
-                   $("#concentrato-container-fiorentina").hide();
+                   $("#concentrato-container-fiorentina").slideUp();
                    $("#grado-bx-fiorentina").val("");
                    $("#tenore-polpa-fiorentina").val("");
+                   $("#stoccaggio-fiorentina").val("");
                }
-           });
-           
-           // Gestione etichetta - altro prodotto
-           $("#etichetta-prodotto").change(function() {
-               if ($(this).val() === "ALTRO") {
-                   $("#altro-prodotto-container").show();
-               } else {
-                   $("#altro-prodotto-container").hide();
-                   $("#altro-prodotto").val("");
-               }
-           });
-           
-           // Gestione etichetta - altra certificazione
-           $("#etichetta-certificazione").change(function() {
-               if ($(this).val() === "ALTRO") {
-                   $("#etichetta-altra-certificazione-container").show();
-               } else {
-                   $("#etichetta-altra-certificazione-container").hide();
-                   $("#etichetta-altra-certificazione").val("");
-               }
-           });
-           
-           // Gestione etichetta - altro fornitore
-           $("#etichetta-fornitore").change(function() {
-               if ($(this).val() === "ALTRO") {
-                   $("#etichetta-altro-fornitore-container").show();
-               } else {
-                   $("#etichetta-altro-fornitore-container").hide();
-                   $("#etichetta-altro-fornitore").val("");
-               }
-           });
-           
-           // Apertura modal etichette con serbatoio preselezionato
-           $(document).on("click", "[data-bs-target='#etichetteModal']", function() {
-               let serbId = $(this).data("serb");
-               $("#serb-id").text(serbId);
-               
-               // Preselezione tipo serbatoio in base al prefisso
-               if (serbId.includes("Azz")) {
-                   $("#etichetta-tipo-serb").val("SERB AZZ");
-               } else if (serbId.startsWith("S")) {
-                   $("#etichetta-tipo-serb").val("SERB 11000");
-               } else if (serbId.startsWith("D")) {
-                   $("#etichetta-tipo-serb").val("SERB Distillatori");
-               }
-               
-               // Se il serbatoio ha già dati, precompiliamo il form
-               if (serbatoi[serbId].prodotto !== "-") {
-                   $("#etichetta-prodotto").val(serbatoi[serbId].prodotto);
-                   $("#etichetta-certificazione").val(serbatoi[serbId].certificazione);
-                   $("#etichetta-fornitore").val(serbatoi[serbId].fornitore);
-                   $("#etichetta-quantita").val(serbatoi[serbId].quantita);
-                   $("#etichetta-data").val(serbatoi[serbId].data);
-                   $("#etichetta-note").val(serbatoi[serbId].note || "");
-               } else {
-                   // Reset del form
-                   $("#etichette-form")[0].reset();
-                   
-                   // Preseleziona il tipo di serbatoio
-                   if (serbId.includes("Azz")) {
-                       $("#etichetta-tipo-serb").val("SERB AZZ");
-                   } else if (serbId.startsWith("S")) {
-                       $("#etichetta-tipo-serb").val("SERB 11000");
-                   } else if (serbId.startsWith("D")) {
-                       $("#etichetta-tipo-serb").val("SERB Distillatori");
-                   }
-                   
-                   $("#etichetta-data").val(new Date().toISOString().split("T")[0]);
-               }
-           });
-           
-           // Salvataggio etichetta serbatoio
-           $("#btn-save-etichetta").click(function() {
-               // Validazione
-               if (!$("#etichetta-tipo-serb").val() || !$("#etichetta-prodotto").val() || 
-                   !$("#etichetta-certificazione").val() || !$("#etichetta-fornitore").val() || 
-                   !$("#etichetta-quantita").val() || !$("#etichetta-data").val()) {
-                   alert("Compila tutti i campi obbligatori!");
-                   return;
-               }
-               
-               // Recupero valori
-               let serbId = $("#serb-id").text();
-               let tipoSerb = $("#etichetta-tipo-serb").val();
-               let prodotto = $("#etichetta-prodotto").val();
-               let certificazione = $("#etichetta-certificazione").val();
-               let fornitore = $("#etichetta-fornitore").val();
-               let quantita = $("#etichetta-quantita").val();
-               let data = $("#etichetta-data").val();
-               let note = $("#etichetta-note").val();
-               
-               // Gestione campi "ALTRO"
-               if (prodotto === "ALTRO") {
-                   prodotto = $("#altro-prodotto").val();
-               }
-               if (certificazione === "ALTRO") {
-                   certificazione = $("#etichetta-altra-certificazione").val();
-               }
-               if (fornitore === "ALTRO") {
-                   fornitore = $("#etichetta-altro-fornitore").val();
-               }
-               
-               // Aggiornamento dati serbatoio
-               serbatoi[serbId] = {
-                   stato: "Occupato",
-                   prodotto: prodotto,
-                   quantita: parseInt(quantita),
-                   certificazione: certificazione,
-                   fornitore: fornitore,
-                   data: data,
-                   note: note
-               };
-               
-               // Aggiornamento UI serbatoio
-               updateTankUI(serbId);
-               
-               // Aggiornamento statistiche
-               updateStats();
-               
-               // Chiusura modal
-               var modal = bootstrap.Modal.getInstance(document.getElementById('etichetteModal'));
-               modal.hide();
-               
-               alert("Etichetta salvata e serbatoio aggiornato con successo!");
            });
            
            // Pulsante reset form
            $("#btn-reset").click(function() {
                if (confirm("Vuoi davvero annullare? I dati inseriti andranno persi.")) {
                    $("#produzione-form")[0].reset();
+                   $("[id^='concentrato-container-']").hide();
                    $("[id$='-container']").hide();
                }
            });
@@ -803,9 +647,29 @@
                }
            });
            
+           // Pulsante registro elettronico
+           $("#btn-registro-elettronico").click(function() {
+               // Verifica se ci sono dati da registrare
+               if (lottiCount === 0) {
+                   alert("Non ci sono lotti da registrare nella bolletta elettronica.");
+                   return;
+               }
+               
+               // Simulazione registrazione
+               let numeroRegistrazione = "REG-" + new Date().getTime().toString().substr(-6);
+               lottiRegistrati++;
+               
+               // Aggiornamento contatore
+               $("#lotti-registrati").text(lottiRegistrati);
+               
+               alert("Registrazione su bolletta elettronica completata con successo!\nNumero registrazione: " + numeroRegistrazione);
+           });
+           
            // Salvataggio dati produzione
            $("#produzione-form").submit(function(e) {
                e.preventDefault();
+               
+               // Validazione form
                
                // Raccolta dati
                let lineaTrasformazione = $("#linea-trasformazione").val();
@@ -842,6 +706,7 @@
                        quantita: parseInt($("#quantita-prima").val()) || 0,
                        gradoBx: $("#prima-spremitura").val() === "CONCENTRATO" ? $("#grado-bx-prima").val() : null,
                        tenorePolpa: $("#prima-spremitura").val() === "CONCENTRATO" ? $("#tenore-polpa-prima").val() : null,
+                       stoccaggio: $("#prima-spremitura").val() === "CONCENTRATO" ? $("#stoccaggio-prima").val() : null,
                        note: $("#note-prima").val()
                    },
                    seconda: {
@@ -849,6 +714,7 @@
                        quantita: parseInt($("#quantita-seconda").val()) || 0,
                        gradoBx: $("#seconda-spremitura").val() === "CONCENTRATO" ? $("#grado-bx-seconda").val() : null,
                        tenorePolpa: $("#seconda-spremitura").val() === "CONCENTRATO" ? $("#tenore-polpa-seconda").val() : null,
+                       stoccaggio: $("#seconda-spremitura").val() === "CONCENTRATO" ? $("#stoccaggio-seconda").val() : null,
                        note: $("#note-seconda").val()
                    },
                    torchiato: {
@@ -856,6 +722,7 @@
                        quantita: parseInt($("#quantita-torchiato").val()) || 0,
                        gradoBx: $("#torchiato").val() === "CONCENTRATO" ? $("#grado-bx-torchiato").val() : null,
                        tenorePolpa: $("#torchiato").val() === "CONCENTRATO" ? $("#tenore-polpa-torchiato").val() : null,
+                       stoccaggio: $("#torchiato").val() === "CONCENTRATO" ? $("#stoccaggio-torchiato").val() : null,
                        note: $("#note-torchiato").val()
                    },
                    fiorentina: {
@@ -863,6 +730,7 @@
                        quantita: parseInt($("#quantita-fiorentina").val()) || 0,
                        gradoBx: $("#v-fiorentina").val() === "CONCENTRATO" ? $("#grado-bx-fiorentina").val() : null,
                        tenorePolpa: $("#v-fiorentina").val() === "CONCENTRATO" ? $("#tenore-polpa-fiorentina").val() : null,
+                       stoccaggio: $("#v-fiorentina").val() === "CONCENTRATO" ? $("#stoccaggio-fiorentina").val() : null,
                        note: $("#note-fiorentina").val()
                    }
                };
@@ -885,20 +753,12 @@
                    return;
                }
                
-               // Verifica che per ogni spremitura con "CONCENTRATO" siano specificati grado e tenore
-               if ((spremiture.prima.destinazione === "CONCENTRATO" && (!spremiture.prima.gradoBx || !spremiture.prima.tenorePolpa)) ||
-                   (spremiture.seconda.destinazione === "CONCENTRATO" && (!spremiture.seconda.gradoBx || !spremiture.seconda.tenorePolpa)) ||
-                   (spremiture.torchiato.destinazione === "CONCENTRATO" && (!spremiture.torchiato.gradoBx || !spremiture.torchiato.tenorePolpa)) ||
-                   (spremiture.fiorentina.destinazione === "CONCENTRATO" && (!spremiture.fiorentina.gradoBx || !spremiture.fiorentina.tenorePolpa))) {
-                   alert("Per le spremiture con destinazione 'CONCENTRATO' devi specificare Grado °BX e Tenore di Polpa!");
-                   return;
-               }
-               
-               // Logica per allocare le spremiture ai serbatoi
-               let allocazioni = allocateToTanks(spremiture, certificazione, fornitore);
-               
-               if (!allocazioni.success) {
-                   alert(allocazioni.message);
+               // Verifica che per ogni spremitura con "CONCENTRATO" siano specificati tutti i campi richiesti
+               if ((spremiture.prima.destinazione === "CONCENTRATO" && (!spremiture.prima.gradoBx || !spremiture.prima.tenorePolpa || !spremiture.prima.stoccaggio)) ||
+                   (spremiture.seconda.destinazione === "CONCENTRATO" && (!spremiture.seconda.gradoBx || !spremiture.seconda.tenorePolpa || !spremiture.seconda.stoccaggio)) ||
+                   (spremiture.torchiato.destinazione === "CONCENTRATO" && (!spremiture.torchiato.gradoBx || !spremiture.torchiato.tenorePolpa || !spremiture.torchiato.stoccaggio)) ||
+                   (spremiture.fiorentina.destinazione === "CONCENTRATO" && (!spremiture.fiorentina.gradoBx || !spremiture.fiorentina.tenorePolpa || !spremiture.fiorentina.stoccaggio))) {
+                   alert("Per le spremiture con destinazione 'CONCENTRATO' devi specificare Grado °BX, Tenore di Polpa e Stoccaggio Prodotto!");
                    return;
                }
                
@@ -922,397 +782,24 @@
                
                // Reset form
                $("#produzione-form")[0].reset();
+               $("[id^='concentrato-container-']").hide();
                $("[id$='-container']").hide();
                
                alert("Dati di produzione salvati con successo!\nID Lotto: " + lottoId);
            });
-           
-           // FUNZIONI DI SUPPORTO
-           
-           // Allocazione ai serbatoi
-           function allocateToTanks(spremiture, certificazione, fornitore) {
-               // Verifica disponibilità serbatoi
-               let needSerb11000 = 0;
-               let needSerbAzz = 0;
-               
-               if (spremiture.prima.destinazione === "SERB 11000") needSerb11000++;
-               if (spremiture.prima.destinazione === "SERB AZZ") needSerbAzz++;
-               if (spremiture.seconda.destinazione === "SERB 11000") needSerb11000++;
-               if (spremiture.seconda.destinazione === "SERB AZZ") needSerbAzz++;
-               if (spremiture.torchiato.destinazione === "SERB 11000") needSerb11000++;
-               if (spremiture.torchiato.destinazione === "SERB AZZ") needSerbAzz++;
-               if (spremiture.fiorentina.destinazione === "SERB 11000") needSerb11000++;
-               if (spremiture.fiorentina.destinazione === "SERB AZZ") needSerbAzz++;
-               
-               // Contiamo serbatoi disponibili
-               let availSerb11000 = 0;
-               let availSerbAzz = 0;
-               
-               for (let id in serbatoi) {
-                   if (serbatoi[id].stato === "Disponibile") {
-                       if (id.startsWith("S")) availSerb11000++;
-                       if (id.includes("Azz")) availSerbAzz++;
-                   }
-               }
-               
-               if (needSerb11000 > availSerb11000 || needSerbAzz > availSerbAzz) {
-                   return {
-                       success: false,
-                       message: "Non ci sono abbastanza serbatoi disponibili per allocare tutte le spremiture!"
-                   };
-               }
-               
-               // Allocazione ai serbatoi
-               const today = new Date().toISOString().split("T")[0];
-               
-               // Funzione per trovare il prossimo serbatoio disponibile
-               function nextAvailableTank(prefix) {
-                   // Per serbatoi 11000 (S21-S30)
-                   if (prefix === "S") {
-                       for (let i = 21; i <= 30; i++) {
-                           let id = "S" + i;
-                           if (serbatoi[id].stato === "Disponibile") {
-                               return id;
-                           }
-                       }
-                   }
-                   // Per serbatoi AZZ (1Azz-10Azz)
-                   else if (prefix === "Azz") {
-                       for (let i = 1; i <= 10; i++) {
-                           let id = i + "Azz";
-                           if (serbatoi[id].stato === "Disponibile") {
-                               return id;
-                           }
-                       }
-                   }
-                   return null;
-               }
-               
-               // Allocazione prima spremitura
-               if (spremiture.prima.destinazione && spremiture.prima.destinazione !== "Nessuna") {
-                   let tankId = null;
-                   if (spremiture.prima.destinazione === "SERB 11000") {
-                       tankId = nextAvailableTank("S");
-                   } else if (spremiture.prima.destinazione === "SERB AZZ") {
-                       tankId = nextAvailableTank("Azz");
-                   }
-                   
-                   if (tankId) {
-                       let prodottoInfo = "1ª SPREMITURA";
-                       
-                       // Aggiunta informazioni per concentrato
-                       if (spremiture.prima.destinazione === "CONCENTRATO") {
-                           prodottoInfo += " - " + spremiture.prima.gradoBx + " - " + spremiture.prima.tenorePolpa;
-                       }
-                       
-                       serbatoi[tankId] = {
-                           stato: "Occupato",
-                           prodotto: prodottoInfo,
-                           quantita: spremiture.prima.quantita,
-                           certificazione: certificazione,
-                           fornitore: fornitore,
-                           data: today,
-                           note: spremiture.prima.note || "Allocato automaticamente"
-                       };
-                       updateTankUI(tankId);
-                   }
-               }
-               
-               // Allocazione seconda spremitura
-               if (spremiture.seconda.destinazione && spremiture.seconda.destinazione !== "Nessuna") {
-                   let tankId = null;
-                   if (spremiture.seconda.destinazione === "SERB 11000") {
-                       tankId = nextAvailableTank("S");
-                   } else if (spremiture.seconda.destinazione === "SERB AZZ") {
-                       tankId = nextAvailableTank("Azz");
-                   }
-                   
-                   if (tankId) {
-                       let prodottoInfo = "2ª SPREMITURA";
-                       
-                       // Aggiunta informazioni per concentrato
-                       if (spremiture.seconda.destinazione === "CONCENTRATO") {
-                           prodottoInfo += " - " + spremiture.seconda.gradoBx + " - " + spremiture.seconda.tenorePolpa;
-                       }
-                       
-                       serbatoi[tankId] = {
-                           stato: "Occupato",
-                           prodotto: prodottoInfo,
-                           quantita: spremiture.seconda.quantita,
-                           certificazione: certificazione,
-                           fornitore: fornitore,
-                           data: today,
-                           note: spremiture.seconda.note || "Allocato automaticamente"
-                       };
-                       updateTankUI(tankId);
-                   }
-               }
-               
-               // Allocazione torchiato
-               if (spremiture.torchiato.destinazione && spremiture.torchiato.destinazione !== "Nessuna") {
-                   let tankId = null;
-                   if (spremiture.torchiato.destinazione === "SERB 11000") {
-                       tankId = nextAvailableTank("S");
-                   } else if (spremiture.torchiato.destinazione === "SERB AZZ") {
-                       tankId = nextAvailableTank("Azz");
-                   }
-                   
-                   if (tankId) {
-                       let prodottoInfo = "TORCHIATO";
-                       
-                       // Aggiunta informazioni per concentrato
-                       if (spremiture.torchiato.destinazione === "CONCENTRATO") {
-                           prodottoInfo += " - " + spremiture.torchiato.gradoBx + " - " + spremiture.torchiato.tenorePolpa;
-                       }
-                       
-                       serbatoi[tankId] = {
-                           stato: "Occupato",
-                           prodotto: prodottoInfo,
-                           quantita: spremiture.torchiato.quantita,
-                           certificazione: certificazione,
-                           fornitore: fornitore,
-                           data: today,
-                           note: spremiture.torchiato.note || "Allocato automaticamente"
-                       };
-                       updateTankUI(tankId);
-                   }
-               }
-               
-               // Allocazione V. Fiorentina
-               if (spremiture.fiorentina.destinazione && spremiture.fiorentina.destinazione !== "Nessuna") {
-                   let tankId = null;
-                   if (spremiture.fiorentina.destinazione === "SERB 11000") {
-                       tankId = nextAvailableTank("S");
-                   } else if (spremiture.fiorentina.destinazione === "SERB AZZ") {
-                       tankId = nextAvailableTank("Azz");
-                   }
-                   
-                   if (tankId) {
-                       let prodottoInfo = "V. FIORENTINA";
-                       
-                       // Aggiunta informazioni per concentrato
-                       if (spremiture.fiorentina.destinazione === "CONCENTRATO") {
-                           prodottoInfo += " - " + spremiture.fiorentina.gradoBx + " - " + spremiture.fiorentina.tenorePolpa;
-                       }
-                       
-                       serbatoi[tankId] = {
-                           stato: "Occupato",
-                           prodotto: prodottoInfo,
-                           quantita: spremiture.fiorentina.quantita,
-                           certificazione: certificazione,
-                           fornitore: fornitore,
-                           data: today,
-                           note: spremiture.fiorentina.note || "Allocato automaticamente"
-                       };
-                       updateTankUI(tankId);
-                   }
-               }
-               
-               return {
-                   success: true
-               };
-           }
-           
-           // Aggiornamento UI serbatoio
-           function updateTankUI(serbId) {
-               const serbData = serbatoi[serbId];
-               const serbCard = $(`[data-bs-target='#etichetteModal'][data-serb='${serbId}']`).closest(".card");
-               
-               if (serbData.stato === "Occupato") {
-                   serbCard.find("strong:contains('Stato:')").next().removeClass("bg-success").addClass("bg-danger").text("Occupato");
-                   serbCard.find("strong:contains('Prodotto:')").parent().text(`Prodotto: ${serbData.prodotto}`);
-                   serbCard.find("strong:contains('Quantità:')").parent().text(`Quantità: ${serbData.quantita} L`);
-                   serbCard.find("strong:contains('Certificazione:')").parent().text(`Certificazione: ${serbData.certificazione}`);
-               } else {
-                   serbCard.find("strong:contains('Stato:')").next().removeClass("bg-danger").addClass("bg-success").text("Disponibile");
-                   serbCard.find("strong:contains('Prodotto:')").parent().text("Prodotto: -");
-                   serbCard.find("strong:contains('Quantità:')").parent().text("Quantità: 0 L");
-                   serbCard.find("strong:contains('Certificazione:')").parent().text("Certificazione: -");
-               }
-           }
            
            // Aggiornamento statistiche
            function updateStats() {
                $("#total-lotti").text(lottiCount);
                $("#total-succo").text(succoTotale + " L");
                $("#total-olio").text(olioTotale.toFixed(2) + " L");
-               
-               // Conteggio serbatoi utilizzati
-               let usedTanks = 0;
-               let usedTanks = 0;
-               let totalTanks = Object.keys(serbatoi).length;
-               
-               for (let id in serbatoi) {
-                   if (serbatoi[id].stato === "Occupato") {
-                       usedTanks++;
-                   }
-               }
-               $("#serbatoi-utilizzati").text(usedTanks + "/" + totalTanks);
+               $("#lotti-registrati").text(lottiRegistrati);
            }
            
            // Utility per padding zeri
            function padZero(num) {
                return num < 10 ? "0" + num : num;
            }
-           
-           // Inizializzazione data nei form
-           $("#etichetta-data").val(new Date().toISOString().split("T")[0]);
-           
-           // Popola la griglia dei serbatoi (funzione per inizializzare l'interfaccia dei serbatoi)
-           function popolaSerbatoi() {
-               // Serbatoi AZZ
-               let htmlAzz = '';
-               for (let i = 1; i <= 10; i++) {
-                   let serbId = i + "Azz";
-                   htmlAzz += `
-                   <div class="col-md-3 mb-4">
-                       <div class="card tank-card">
-                           <div class="card-header tank-header">${i} Azz.</div>
-                           <div class="card-body">
-                               <p><strong>Stato:</strong> <span class="badge bg-success">Disponibile</span></p>
-                               <p><strong>Prodotto:</strong> -</p>
-                               <p><strong>Quantità:</strong> 0 L</p>
-                               <p><strong>Certificazione:</strong> -</p>
-                               <button class="btn btn-sm btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#etichetteModal" data-serb="${serbId}">
-                                   <i class="bi bi-pencil"></i> Gestisci
-                               </button>
-                           </div>
-                       </div>
-                   </div>`;
-               }
-               $("#serbazz-content .row").html(htmlAzz);
-               
-               // Serbatoi 11000
-               let html11000 = '';
-               for (let i = 21; i <= 30; i++) {
-                   let serbId = "S" + i;
-                   html11000 += `
-                   <div class="col-md-3 mb-4">
-                       <div class="card tank-card">
-                           <div class="card-header tank-header">S${i}</div>
-                           <div class="card-body">
-                               <p><strong>Stato:</strong> <span class="badge bg-success">Disponibile</span></p>
-                               <p><strong>Prodotto:</strong> -</p>
-                               <p><strong>Quantità:</strong> 0 L</p>
-                               <p><strong>Certificazione:</strong> -</p>
-                               <button class="btn btn-sm btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#etichetteModal" data-serb="${serbId}">
-                                   <i class="bi bi-pencil"></i> Gestisci
-                               </button>
-                           </div>
-                       </div>
-                   </div>`;
-               }
-               $("#serb11000-content .row").html(html11000);
-               
-               // Serbatoi distillatori
-               let htmlDist = '';
-               for (let i = 1; i <= 4; i++) {
-                   let serbId = "D" + i;
-                   htmlDist += `
-                   <div class="col-md-3 mb-4">
-                       <div class="card tank-card">
-                           <div class="card-header tank-header">Distillatore ${i}</div>
-                           <div class="card-body">
-                               <p><strong>Stato:</strong> <span class="badge bg-success">Disponibile</span></p>
-                               <p><strong>Prodotto:</strong> -</p>
-                               <p><strong>Quantità:</strong> 0 L</p>
-                               <p><strong>Certificazione:</strong> -</p>
-                               <button class="btn btn-sm btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#etichetteModal" data-serb="${serbId}">
-                                   <i class="bi bi-pencil"></i> Gestisci
-                               </button>
-                           </div>
-                       </div>
-                   </div>`;
-               }
-               $("#serbdist-content .row").html(htmlDist);
-           }
-           
-           // Inizializzazione del modal delle etichette
-           function inizializzaModalEtichette() {
-               $("#etichette-form").html(`
-                   <div class="row mb-3">
-                       <div class="col-md-6">
-                           <label for="etichetta-tipo-serb" class="form-label required-field">Tipo Serbatoio</label>
-                           <select class="form-select" id="etichetta-tipo-serb" required>
-                               <option value="" selected disabled>Seleziona...</option>
-                               <option value="SERB 11000">SERB 11000</option>
-                               <option value="SERB AZZ">SERB AZZ</option>
-                               <option value="SERB Distillatori">SERB Distillatori</option>
-                           </select>
-                       </div>
-                       <div class="col-md-6">
-                           <label for="etichetta-prodotto" class="form-label required-field">Tipo Prodotto</label>
-                           <select class="form-select" id="etichetta-prodotto" required>
-                               <option value="" selected disabled>Seleziona...</option>
-                               <option value="1ª SPREMITURA">1ª SPREMITURA</option>
-                               <option value="2ª SPREMITURA">2ª SPREMITURA</option>
-                               <option value="TORCHIATO">TORCHIATO</option>
-                               <option value="V. FIORENTINA">V. FIORENTINA</option>
-                               <option value="ALTRO">ALTRO</option>
-                           </select>
-                           <div id="altro-prodotto-container" style="display: none;" class="mt-2">
-                               <input type="text" class="form-control" id="altro-prodotto" placeholder="Specifica altro prodotto">
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="row mb-3">
-                       <div class="col-md-6">
-                           <label for="etichetta-certificazione" class="form-label required-field">Certificazione</label>
-                           <select class="form-select" id="etichetta-certificazione" required>
-                               <option value="" selected disabled>Seleziona...</option>
-                               <option value="BIO EU">BIO EU</option>
-                               <option value="BIO DEMETER">BIO DEMETER</option>
-                               <option value="CONVENZIONALE">CONVENZIONALE</option>
-                               <option value="IGP">IGP</option>
-                               <option value="ALTRO">ALTRO</option>
-                           </select>
-                           <div id="etichetta-altra-certificazione-container" style="display: none;" class="mt-2">
-                               <input type="text" class="form-control" id="etichetta-altra-certificazione" placeholder="Specifica altra certificazione">
-                           </div>
-                       </div>
-                       <div class="col-md-6">
-                           <label for="etichetta-fornitore" class="form-label required-field">Fornitore</label>
-                           <select class="form-select" id="etichetta-fornitore" required>
-                               <option value="" selected disabled>Seleziona...</option>
-                               <option value="ARCO">ARCO</option>
-                               <option value="CI">CI</option>
-                               <option value="RESTUCCIA">RESTUCCIA</option>
-                               <option value="ALTRO">ALTRO</option>
-                           </select>
-                           <div id="etichetta-altro-fornitore-container" style="display: none;" class="mt-2">
-                               <input type="text" class="form-control" id="etichetta-altro-fornitore" placeholder="Specifica altro fornitore">
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="row mb-3">
-                       <div class="col-md-6">
-                           <label for="etichetta-quantita" class="form-label required-field">Quantità (L)</label>
-                           <input type="number" class="form-control" id="etichetta-quantita" required min="1">
-                       </div>
-                       <div class="col-md-6">
-                           <label for="etichetta-data" class="form-label required-field">Data Produzione</label>
-                           <input type="date" class="form-control" id="etichetta-data" required>
-                       </div>
-                   </div>
-
-                   <div class="row mb-3">
-                       <div class="col-md-12">
-                           <label for="etichetta-note" class="form-label">Note</label>
-                           <textarea class="form-control" id="etichetta-note" rows="3"></textarea>
-                       </div>
-                   </div>
-
-                   <div class="alert alert-info mt-3">
-                       <i class="bi bi-info-circle"></i> Questa etichetta sarà stampata e applicata al serbatoio selezionato.
-                   </div>
-               `);
-           }
-           
-           // Inizializza l'interfaccia
-           popolaSerbatoi();
-           inizializzaModalEtichette();
        });
    </script>
 </body>
