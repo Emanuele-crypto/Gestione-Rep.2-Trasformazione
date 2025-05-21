@@ -25,15 +25,6 @@
             background-color: #f5efd4;
             font-weight: bold;
         }
-        .stats-card {
-            text-align: center;
-            padding: 15px;
-        }
-        .stats-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #D4A017;
-        }
         .btn-custom {
             background-color: #D4A017;
             color: white;
@@ -73,6 +64,32 @@
             margin-bottom: 15px;
             border-left: 4px solid #D4A017;
         }
+        .highlighted-info {
+            background-color: #f5efd4;
+            border: 2px solid #D4A017;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .highlighted-field {
+            font-weight: bold;
+            background-color: #fff8e1;
+            border: 1px solid #D4A017;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .main-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #D4A017;
+            text-align: center;
+            margin: 15px 0;
+            border-bottom: 2px solid #D4A017;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -97,30 +114,32 @@
     </div>
 
     <div class="container mb-5">
-        <!-- Statistiche -->
+        <!-- Informazioni principali evidenziate -->
         <div class="row mb-4">
-            <div class="col-md-3">
-                <div class="card stats-card">
-                    <div class="stats-value" id="total-lotti">0</div>
-                    <div>Lotti in Lavorazione</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card stats-card">
-                    <div class="stats-value" id="total-succo">0 L</div>
-                    <div>Succo Totale</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card stats-card">
-                    <div class="stats-value" id="total-olio">0 L</div>
-                    <div>Olio Essenziale</div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card stats-card">
-                    <div class="stats-value" id="lotti-registrati">0</div>
-                    <div>Lotti Registrati</div>
+            <div class="col-12">
+                <div class="main-title">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <select class="form-select form-select-lg highlighted-field" id="tipo-agrume" required>
+                                <option value="" selected disabled>Seleziona Agrume...</option>
+                                <option value="Arance">ARANCE</option>
+                                <option value="Arance Rosse">ARANCE ROSSE</option>
+                                <option value="Limoni">LIMONI</option>
+                                <option value="Mandarini">MANDARINI</option>
+                                <option value="Pompelmi">POMPELMI</option>
+                                <option value="Altro">ALTRO</option>
+                            </select>
+                            <div id="altro-agrume-container" style="display: none;" class="mt-2">
+                                <input type="text" class="form-control highlighted-field" id="altro-agrume" placeholder="Specifica altro agrume">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span id="titolo-data">DEL <input type="date" class="form-control highlighted-field" id="data-lavorazione" required></span>
+                        </div>
+                        <div class="col-md-4">
+                            <div id="info-lotto" class="highlighted-field"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -134,9 +153,9 @@
                 <form id="produzione-form">
                     <h5 class="section-heading">Dettagli Lavorazione</h5>
                     <div class="row mb-3">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="linea-trasformazione" class="form-label required-field">Linea di Trasformazione</label>
-                            <select class="form-select" id="linea-trasformazione" required>
+                            <select class="form-select highlighted-field" id="linea-trasformazione" required>
                                 <option value="" selected disabled>Seleziona...</option>
                                 <option value="BOE">BOE</option>
                                 <option value="GOE INT">GOE INT</option>
@@ -145,12 +164,12 @@
                                 <option value="ALTRA">ALTRA</option>
                             </select>
                             <div id="altra-linea-container" style="display: none;" class="mt-2">
-                                <input type="text" class="form-control" id="altra-linea" placeholder="Specifica altra linea">
+                                <input type="text" class="form-control highlighted-field" id="altra-linea" placeholder="Specifica altra linea">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="fornitore" class="form-label required-field">Fornitore</label>
-                            <select class="form-select" id="fornitore" required>
+                            <select class="form-select highlighted-field" id="fornitore" required>
                                 <option value="" selected disabled>Seleziona...</option>
                                 <option value="ARCO">ARCO</option>
                                 <option value="CI">CI</option>
@@ -158,28 +177,13 @@
                                 <option value="ALTRO">ALTRO</option>
                             </select>
                             <div id="altro-fornitore-container" style="display: none;" class="mt-2">
-                                <input type="text" class="form-control" id="altro-fornitore" placeholder="Specifica altro fornitore">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="tipo-agrume" class="form-label required-field">Tipo Agrume</label>
-                            <select class="form-select" id="tipo-agrume" required>
-                                <option value="" selected disabled>Seleziona...</option>
-                                <option value="Arance">Arance</option>
-                                <option value="Arance Rosse">Arance Rosse</option>
-                                <option value="Limoni">Limoni</option>
-                                <option value="Mandarini">Mandarini</option>
-                                <option value="Pompelmi">Pompelmi</option>
-                                <option value="Altro">Altro</option>
-                            </select>
-                            <div id="altro-agrume-container" style="display: none;" class="mt-2">
-                                <input type="text" class="form-control" id="altro-agrume" placeholder="Specifica altro agrume">
+                                <input type="text" class="form-control highlighted-field" id="altro-fornitore" placeholder="Specifica altro fornitore">
                             </div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="destinazione-essenza" class="form-label required-field">Destinazione Essenza</label>
                             <select class="form-select" id="destinazione-essenza" required>
                                 <option value="" selected disabled>Seleziona...</option>
@@ -192,7 +196,7 @@
                                 <input type="text" class="form-control" id="altra-essenza" placeholder="Specifica altra destinazione">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="certificazione" class="form-label required-field">Certificazione</label>
                             <select class="form-select" id="certificazione" required>
                                 <option value="" selected disabled>Seleziona...</option>
@@ -205,10 +209,6 @@
                             <div id="altra-certificazione-container" style="display: none;" class="mt-2">
                                 <input type="text" class="form-control" id="altra-certificazione" placeholder="Specifica altra certificazione">
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="quantita" class="form-label required-field">Quantità (kg)</label>
-                            <input type="number" class="form-control" id="quantita" required min="1">
                         </div>
                     </div>
 
@@ -274,15 +274,6 @@
                                 <option value="Nessuna">Nessuna</option>
                             </select>
                             
-                            <div class="mt-2">
-                                <label for="pastorizzazione-prima" class="form-label">Pastorizzazione</label>
-                                <select class="form-select" id="pastorizzazione-prima">
-                                    <option value="" selected disabled>Seleziona...</option>
-                                    <option value="Pastorizzato">Pastorizzato</option>
-                                    <option value="Non Pastorizzato">Non Pastorizzato</option>
-                                </select>
-                            </div>
-                            
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <label for="quantita-stimata-prima" class="form-label">Quantità Stimata (L)</label>
@@ -320,6 +311,13 @@
                                     <option value="3%">3%</option>
                                     <option value="5%">5%</option>
                                     <option value="STANDARD">STANDARD</option>
+                                </select>
+                                
+                                <label for="pastorizzazione-prima" class="form-label mt-2">Pastorizzazione</label>
+                                <select class="form-select" id="pastorizzazione-prima">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
                                 </select>
                                 
                                 <label for="stoccaggio-prima" class="form-label mt-2">Stoccaggio/Confezionamento</label>
@@ -411,15 +409,6 @@
                                 <option value="Nessuna">Nessuna</option>
                             </select>
                             
-                            <div class="mt-2">
-                                <label for="pastorizzazione-seconda" class="form-label">Pastorizzazione</label>
-                                <select class="form-select" id="pastorizzazione-seconda">
-                                    <option value="" selected disabled>Seleziona...</option>
-                                    <option value="Pastorizzato">Pastorizzato</option>
-                                    <option value="Non Pastorizzato">Non Pastorizzato</option>
-                                </select>
-                            </div>
-                            
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <label for="quantita-stimata-seconda" class="form-label">Quantità Stimata (L)</label>
@@ -459,25 +448,18 @@
                                     <option value="STANDARD">STANDARD</option>
                                 </select>
                                 
+                                <label for="pastorizzazione-seconda" class="form-label mt-2">Pastorizzazione</label>
+                                <select class="form-select" id="pastorizzazione-seconda">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                                
                                 <label for="stoccaggio-seconda" class="form-label mt-2">Stoccaggio/Confezionamento</label>
                                 <select class="form-select" id="stoccaggio-seconda">
                                     <option value="" selected disabled>Seleziona...</option>
                                     <option value="PET 100">PET 100</option>
-                                    <option value="PET 200">PET 200</option>
-                                    <option value="PET 480">PET 480</option>
-                                    <option value="REX">REX</option>
-                                    <option value="ACMA">ACMA</option>
-                                    <option value="BUSTE GOGLIO">BUSTE GOGLIO</option>
-                                    <option value="VASCHETTE">VASCHETTE</option>
-                                    <option value="VASCHETTE ZUCCHERATE">VASCHETTE ZUCCHERATE</option>
-                                    <option value="LATTE">LATTE</option>
-                                    <option value="FBL">FBL</option>
-                                    <option value="FUSTI DI FERRO">FUSTI DI FERRO</option>
-                                    <option value="FUSTI T.C">FUSTI T.C</option>
-                                    <option value="BIC">BIC</option>
-                                    <option value="1 Azz.">1 Azz.</option>
-                                    <option value="2 Azz.">2 Azz.</option>
-                                    <!-- Altri serbatoi come nella prima spremitura -->
+                                    <!-- Altre opzioni stoccaggio come nella prima spremitura -->
                                 </select>
                             </div>
                             
@@ -507,50 +489,41 @@
                                 <option value="PET 100">PET 100</option>
                                 <option value="PET 200">PET 200</option>
                                 <option value="PET 480">PET 480</option>
-                                <option value="CONCENTRATO
-                                    <option value="CONCENTRATO">CONCENTRATO</option>
-                               <option value="ALTRO">ALTRO</option>
-                               <option value="Nessuna">Nessuna</option>
-                           </select>
-                           
-                           <div class="mt-2">
-                               <label for="pastorizzazione-torchiato" class="form-label">Pastorizzazione</label>
-                               <select class="form-select" id="pastorizzazione-torchiato">
-                                   <option value="" selected disabled>Seleziona...</option>
-                                   <option value="Pastorizzato">Pastorizzato</option>
-                                   <option value="Non Pastorizzato">Non Pastorizzato</option>
-                               </select>
-                           </div>
-                           
-                           <div class="row mt-2">
-                               <div class="col-md-6">
-                                   <label for="quantita-stimata-torchiato" class="form-label">Quantità Stimata (L)</label>
-                                   <input type="number" class="form-control" id="quantita-stimata-torchiato" min="0">
-                               </div>
-                               <div class="col-md-6">
-                                   <label for="quantita-effettiva-torchiato" class="form-label">Quantità Effettiva (L)</label>
-                                   <input type="number" class="form-control" id="quantita-torchiato" min="0">
-                               </div>
-                           </div>
-                           
-                           <div id="opzioni-aggiuntive-torchiato" class="mt-2">
-                               <label for="grado-bx-torchiato" class="form-label">Grado °BX</label>
-                               <select class="form-select" id="grado-bx-torchiato">
-                                   <option value="" selected disabled>Seleziona...</option>
-                                   <option value="NAT">NAT</option>
-                                   <option value="20°">20°</option>
-                                   <option value="32°">32°</option>
-                                   <option value="40°">40°</option>
-                                   <option value="45°">45°</option>
-                                   <option value="55°">55°</option>
-                                   <option value="58°">58°</option>
-                                   <option value="60°">60°</option>
-                                   <option value="63.5°">63.5°</option>
-                                   <option value="65°">65°</option>
-                               </select>
-                               
-                               <label for="tenore-polpa-torchiato" class="form-label mt-2">Tenore di Polpa</label>
-                               <select class="form-select" id="tenore-polpa-torchiato">
+                                <option value="CONCENTRATO">CONCENTRATO</option>
+                                <option value="ALTRO">ALTRO</option>
+                                <option value="Nessuna">Nessuna</option>
+                            </select>
+                            
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <label for="quantita-stimata-torchiato" class="form-label">Quantità Stimata (L)</label>
+                                    <input type="number" class="form-control" id="quantita-stimata-torchiato" min="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quantita-effettiva-torchiato" class="form-label">Quantità Effettiva (L)</label>
+                                    <input type="number" class="form-control" id="quantita-torchiato" min="0">
+                                </div>
+                            </div>
+                            
+                            <div id="opzioni-aggiuntive-torchiato" class="mt-2">
+                                <label for="grado-bx-torchiato" class="form-label">Grado °BX</label>
+                                <select class="form-select" id="grado-bx-torchiato">
+                                    <option value="" selected disabled>Seleziona...</option>
+                                    <option value="NAT">NAT</option>
+                                    <option value="20°">20°</option>
+                                    <option value="32°">32°</option>
+                                    <option value="40°">40°</option>
+                                    <option value="45°">45°</option>
+                                    <option value="55°">55°</option>
+                                    <option value="58°">58°</option>
+                                    <option value="60°">60°</option>
+                                    <option value="63.5°">63.5°</option>
+                                    <option value="65°">65°</option>
+                                </select>
+                                
+                                <label for="tenore-polpa-torchiato" class="form-label mt-2">Tenore di Polpa</label>
+                                <select class="form-select" id="tenore-polpa-torchiato
+                                    <select class="form-select" id="tenore-polpa-torchiato">
                                    <option value="" selected disabled>Seleziona...</option>
                                    <option value="LIMPIDO">LIMPIDO</option>
                                    <option value="SEMICLEAR">SEMICLEAR</option>
@@ -559,6 +532,13 @@
                                    <option value="3%">3%</option>
                                    <option value="5%">5%</option>
                                    <option value="STANDARD">STANDARD</option>
+                               </select>
+                               
+                               <label for="pastorizzazione-torchiato" class="form-label mt-2">Pastorizzazione</label>
+                               <select class="form-select" id="pastorizzazione-torchiato">
+                                   <option value="" selected disabled>Seleziona...</option>
+                                   <option value="SI">SI</option>
+                                   <option value="NO">NO</option>
                                </select>
                                
                                <label for="stoccaggio-torchiato" class="form-label mt-2">Stoccaggio/Confezionamento</label>
@@ -650,15 +630,6 @@
                                <option value="Nessuna">Nessuna</option>
                            </select>
                            
-                           <div class="mt-2">
-                               <label for="pastorizzazione-estratto" class="form-label">Pastorizzazione</label>
-                               <select class="form-select" id="pastorizzazione-estratto">
-                                   <option value="" selected disabled>Seleziona...</option>
-                                   <option value="Pastorizzato">Pastorizzato</option>
-                                   <option value="Non Pastorizzato">Non Pastorizzato</option>
-                               </select>
-                           </div>
-                           
                            <div class="row mt-2">
                                <div class="col-md-6">
                                    <label for="quantita-stimata-estratto" class="form-label">Quantità Stimata (L)</label>
@@ -696,6 +667,13 @@
                                    <option value="3%">3%</option>
                                    <option value="5%">5%</option>
                                    <option value="STANDARD">STANDARD</option>
+                               </select>
+                               
+                               <label for="pastorizzazione-estratto" class="form-label mt-2">Pastorizzazione</label>
+                               <select class="form-select" id="pastorizzazione-estratto">
+                                   <option value="" selected disabled>Seleziona...</option>
+                                   <option value="SI">SI</option>
+                                   <option value="NO">NO</option>
                                </select>
                                
                                <label for="stoccaggio-estratto" class="form-label mt-2">Stoccaggio/Confezionamento</label>
@@ -784,11 +762,57 @@
    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
    <script>
        $(document).ready(function() {
-           // Dati di stato
-           let lottiCount = 0;
-           let succoTotale = 0;
-           let olioTotale = 0;
-           let lottiRegistrati = 0;
+           // Inizializza ID lotto
+           let lottoId = "";
+           
+           // Aggiorna il titolo della pagina quando cambia il tipo di agrume
+           $("#tipo-agrume").change(function() {
+               updatePageTitle();
+               
+               if ($(this).val() === "Altro") {
+                   $("#altro-agrume-container").show();
+                   $("#altro-agrume").on('input', function() {
+                       updatePageTitle();
+                   });
+               } else {
+                   $("#altro-agrume-container").hide();
+                   $("#altro-agrume").val("");
+               }
+           });
+           
+           // Aggiorna il titolo quando cambia la data
+           $("#data-lavorazione").change(function() {
+               updatePageTitle();
+           });
+           
+           // Funzione per aggiornare il titolo della pagina
+           function updatePageTitle() {
+               let tipoAgrume = $("#tipo-agrume").val();
+               if (tipoAgrume === "Altro") {
+                   tipoAgrume = $("#altro-agrume").val();
+               }
+               
+               let dataLavorazione = $("#data-lavorazione").val();
+               let dataFormattata = "";
+               
+               if (dataLavorazione) {
+                   const date = new Date(dataLavorazione);
+                   dataFormattata = date.toLocaleDateString('it-IT', {
+                       day: '2-digit',
+                       month: '2-digit',
+                       year: 'numeric'
+                   });
+               }
+               
+               if (tipoAgrume && dataFormattata) {
+                   $("#titolo-data").html("DEL " + dataFormattata);
+                   // Formatta e mostra il titolo principale evidenziato
+                   $(".main-title").addClass("highlight-animation");
+                   setTimeout(function() {
+                       $(".main-title").removeClass("highlight-animation");
+                   }, 1000);
+               }
+           }
            
            // Inizializza stato dei campi opzioni aggiuntive (nascosti all'inizio)
            $("#opzioni-aggiuntive-prima").hide();
@@ -813,16 +837,6 @@
                } else {
                    $("#altro-fornitore-container").hide();
                    $("#altro-fornitore").val("");
-               }
-           });
-           
-           // Gestione altro agrume
-           $("#tipo-agrume").change(function() {
-               if ($(this).val() === "Altro") {
-                   $("#altro-agrume-container").show();
-               } else {
-                   $("#altro-agrume-container").hide();
-                   $("#altro-agrume").val("");
                }
            });
            
@@ -855,6 +869,7 @@
                    $("#opzioni-aggiuntive-prima").slideUp();
                    $("#grado-bx-prima").val("");
                    $("#tenore-polpa-prima").val("");
+                   $("#pastorizzazione-prima").val("");
                    $("#stoccaggio-prima").val("");
                }
            });
@@ -867,6 +882,7 @@
                    $("#opzioni-aggiuntive-seconda").slideUp();
                    $("#grado-bx-seconda").val("");
                    $("#tenore-polpa-seconda").val("");
+                   $("#pastorizzazione-seconda").val("");
                    $("#stoccaggio-seconda").val("");
                }
            });
@@ -879,6 +895,7 @@
                    $("#opzioni-aggiuntive-torchiato").slideUp();
                    $("#grado-bx-torchiato").val("");
                    $("#tenore-polpa-torchiato").val("");
+                   $("#pastorizzazione-torchiato").val("");
                    $("#stoccaggio-torchiato").val("");
                }
            });
@@ -891,6 +908,7 @@
                    $("#opzioni-aggiuntive-estratto").slideUp();
                    $("#grado-bx-estratto").val("");
                    $("#tenore-polpa-estratto").val("");
+                   $("#pastorizzazione-estratto").val("");
                    $("#stoccaggio-estratto").val("");
                }
            });
@@ -904,6 +922,7 @@
                    $("#opzioni-aggiuntive-torchiato").hide();
                    $("#opzioni-aggiuntive-estratto").hide();
                    $("[id$='-container']").hide();
+                   $("#info-lotto").text("");
                }
            });
            
@@ -922,17 +941,13 @@
            
            // Pulsante registro elettronico
            $("#btn-registro-elettronico").click(function() {
-               if (lottiCount === 0) {
-                   alert("Non ci sono lotti da registrare nella bolletta elettronica.");
+               if (!lottoId) {
+                   alert("Non ci sono dati da registrare nella bolletta elettronica. Salva prima i dati di produzione.");
                    return;
                }
                
                // Simulazione registrazione
                let numeroRegistrazione = "REG-" + new Date().getTime().toString().substr(-6);
-               lottiRegistrati++;
-               
-               // Aggiornamento contatore
-               $("#lotti-registrati").text(lottiRegistrati);
                
                alert("Registrazione su bolletta elettronica completata con successo!\nNumero registrazione: " + numeroRegistrazione);
            });
@@ -941,7 +956,22 @@
            $("#produzione-form").submit(function(e) {
                e.preventDefault();
                
+               // Verifica campi obbligatori nella sezione principale
+               if (!$("#tipo-agrume").val() || !$("#data-lavorazione").val() || 
+                   !$("#linea-trasformazione").val() || !$("#fornitore").val() || 
+                   !$("#destinazione-essenza").val() || !$("#certificazione").val()) {
+                   alert("Compila tutti i campi obbligatori nella sezione dettagli lavorazione!");
+                   return;
+               }
+               
                // Raccolta dati
+               let tipoAgrume = $("#tipo-agrume").val();
+               if (tipoAgrume === "Altro") {
+                   tipoAgrume = $("#altro-agrume").val();
+               }
+               
+               let dataLavorazione = $("#data-lavorazione").val();
+               
                let lineaTrasformazione = $("#linea-trasformazione").val();
                if (lineaTrasformazione === "ALTRA") {
                    lineaTrasformazione = $("#altra-linea").val();
@@ -950,11 +980,6 @@
                let fornitore = $("#fornitore").val();
                if (fornitore === "ALTRO") {
                    fornitore = $("#altro-fornitore").val();
-               }
-               
-               let tipoAgrume = $("#tipo-agrume").val();
-               if (tipoAgrume === "Altro") {
-                   tipoAgrume = $("#altro-agrume").val();
                }
                
                let destinazioneEssenza = $("#destinazione-essenza").val();
@@ -966,8 +991,6 @@
                if (certificazione === "ALTRO") {
                    certificazione = $("#altra-certificazione").val();
                }
-               
-               let quantita = parseInt($("#quantita").val());
                
                // Orari e quantità
                let orariEQuantita = {
@@ -983,41 +1006,41 @@
                let spremiture = {
                    prima: {
                        destinazione: $("#prima-spremitura").val(),
-                       pastorizzazione: $("#pastorizzazione-prima").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-prima").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-prima").val()) || 0,
                        gradoBx: $("#grado-bx-prima").val(),
                        tenorePolpa: $("#tenore-polpa-prima").val(),
+                       pastorizzazione: $("#pastorizzazione-prima").val(),
                        stoccaggio: $("#stoccaggio-prima").val(),
                        note: $("#note-prima").val()
                    },
                    seconda: {
                        destinazione: $("#seconda-spremitura").val(),
-                       pastorizzazione: $("#pastorizzazione-seconda").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-seconda").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-seconda").val()) || 0,
                        gradoBx: $("#grado-bx-seconda").val(),
                        tenorePolpa: $("#tenore-polpa-seconda").val(),
+                       pastorizzazione: $("#pastorizzazione-seconda").val(),
                        stoccaggio: $("#stoccaggio-seconda").val(),
                        note: $("#note-seconda").val()
                    },
                    torchiato: {
                        destinazione: $("#torchiato").val(),
-                       pastorizzazione: $("#pastorizzazione-torchiato").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-torchiato").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-torchiato").val()) || 0,
                        gradoBx: $("#grado-bx-torchiato").val(),
                        tenorePolpa: $("#tenore-polpa-torchiato").val(),
+                       pastorizzazione: $("#pastorizzazione-torchiato").val(),
                        stoccaggio: $("#stoccaggio-torchiato").val(),
                        note: $("#note-torchiato").val()
                    },
                    estratto: {
                        destinazione: $("#estratto").val(),
-                       pastorizzazione: $("#pastorizzazione-estratto").val(),
                        quantitaStimata: parseInt($("#quantita-stimata-estratto").val()) || 0,
                        quantitaEffettiva: parseInt($("#quantita-estratto").val()) || 0,
                        gradoBx: $("#grado-bx-estratto").val(),
                        tenorePolpa: $("#tenore-polpa-estratto").val(),
+                       pastorizzazione: $("#pastorizzazione-estratto").val(),
                        stoccaggio: $("#stoccaggio-estratto").val(),
                        note: $("#note-estratto").val()
                    }
@@ -1044,8 +1067,7 @@
                // Verifica che per ogni spremitura selezionata ci siano tutti i dettagli richiesti
                function verificaDettagliSpremitura(spremitura) {
                    if (spremitura.destinazione && spremitura.destinazione !== "Nessuna") {
-                       if (!spremitura.gradoBx || !spremitura.tenorePolpa || !spremitura.stoccaggio || !spremitura.pastorizzazione)
-                           if (!spremitura.gradoBx || !spremitura.tenorePolpa || !spremitura.stoccaggio || !spremitura.pastorizzazione) {
+                       if (!spremitura.gradoBx || !spremitura.tenorePolpa || !spremitura.stoccaggio || !spremitura.pastorizzazione) {
                            return false;
                        }
                    }
@@ -1055,52 +1077,38 @@
                if (!verificaDettagliSpremitura(spremiture.prima) || 
                    !verificaDettagliSpremitura(spremiture.seconda) || 
                    !verificaDettagliSpremitura(spremiture.torchiato) || 
+                   !verificaDettagliSpremitura(spremiture.
+                                               !verificaDettagliSpremitura(spremiture.prima) || 
+                   !verificaDettagliSpremitura(spremiture.seconda) || 
+                   !verificaDettagliSpremitura(spremiture.torchiato) || 
                    !verificaDettagliSpremitura(spremiture.estratto)) {
-                   alert("Per tutte le spremiture selezionate devi specificare: Grado °BX, Tenore di Polpa, Stoccaggio/Confezionamento e Pastorizzazione!");
+                   alert("Per tutte le spremiture selezionate devi specificare: Grado °BX, Tenore di Polpa, Pastorizzazione e Stoccaggio/Confezionamento!");
                    return;
                }
                
                // Simulazione generazione ID lotto
                const now = new Date();
-               const lottoId = "L-" + 
-                              now.getFullYear() + 
-                              padZero(now.getMonth() + 1) + 
-                              padZero(now.getDate()) + "-" + 
-                              padZero(now.getHours()) + 
-                              padZero(now.getMinutes());
+               lottoId = "L-" + 
+                       now.getFullYear() + 
+                       padZero(now.getMonth() + 1) + 
+                       padZero(now.getDate()) + "-" + 
+                       padZero(now.getHours()) + 
+                       padZero(now.getMinutes());
                
-               // Incremento contatori
-               lottiCount++;
-               succoTotale += spremiture.prima.quantitaEffettiva + spremiture.seconda.quantitaEffettiva + 
-                             spremiture.torchiato.quantitaEffettiva + spremiture.estratto.quantitaEffettiva;
-               olioTotale += quantita * 0.01; // Simulazione 1% di olio essenziale
-               
-               // Aggiornamento statistiche
-               updateStats();
-               
-               // Reset form
-               $("#produzione-form")[0].reset();
-               $("#opzioni-aggiuntive-prima").hide();
-               $("#opzioni-aggiuntive-seconda").hide();
-               $("#opzioni-aggiuntive-torchiato").hide();
-               $("#opzioni-aggiuntive-estratto").hide();
-               $("[id$='-container']").hide();
+               // Imposta l'ID lotto nell'interfaccia
+               $("#info-lotto").text("Lotto: " + lottoId);
                
                alert("Dati di produzione salvati con successo!\nID Lotto: " + lottoId);
            });
-           
-           // Aggiornamento statistiche
-           function updateStats() {
-               $("#total-lotti").text(lottiCount);
-               $("#total-succo").text(succoTotale + " L");
-               $("#total-olio").text(olioTotale.toFixed(2) + " L");
-               $("#lotti-registrati").text(lottiRegistrati);
-           }
            
            // Utility per padding zeri
            function padZero(num) {
                return num < 10 ? "0" + num : num;
            }
+           
+           // Imposta la data odierna di default
+           const today = new Date();
+           $("#data-lavorazione").val(today.toISOString().split("T")[0]);
        });
    </script>
 </body>
